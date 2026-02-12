@@ -1,0 +1,90 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="AddBreedingPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddDiseaseLogPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddFishPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddingFish.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddingPlant.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddingSubstrate.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddPlantPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AddWaterChange.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AdminDiseasePage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AllSpecies.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AquariumCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="AquariumDetailPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Aquariums.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CompatabilityPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="CreatingAquarium.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="EditFishWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Fish.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FullFishInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="FullPlantInfo.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Home.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Login.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="PhotoGalleryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Plant.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Registration.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SettleFryWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SpeciesCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SubstrateCard.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="SuperAdminDashboardPage.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

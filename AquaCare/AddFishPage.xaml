@@ -1,0 +1,141 @@
+﻿<Page x:Class="AquaCare.AddFishPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Заселення риби" Background="#FFE9E9E9"
+      Loaded="Page_Loaded">
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="350"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Text="Заселення нової рибки" 
+                   Grid.ColumnSpan="2"
+                   FontSize="24" FontWeight="Bold" Foreground="#333"
+                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                   Margin="0,0,0,20"/>
+
+        <GroupBox Header="Крок 1: Оберіть вид" Grid.Column="0" Margin="0,40,20,0" Padding="5" Background="White">
+            <ListBox x:Name="SpeciesListBox" 
+                     ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     ScrollViewer.VerticalScrollBarVisibility="Auto"
+                     BorderThickness="0" Background="Transparent" SelectionChanged="SpeciesListBox_SelectionChanged">
+
+                <ListBox.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal" Width="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=ListBox}}"/>
+                    </ItemsPanelTemplate>
+                </ListBox.ItemsPanel>
+
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <Border Width="500" Height="130" Margin="5" Background="White" CornerRadius="8" BorderThickness="1" BorderBrush="#E0E0E0">
+                            <Border.Effect>
+                                <DropShadowEffect Color="Black" Direction="270" ShadowDepth="2" Opacity="0.1" BlurRadius="6"/>
+                            </Border.Effect>
+
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                                <Border Grid.Column="0" CornerRadius="8,0,0,8" ClipToBounds="True" Background="#F5F5F5">
+                                    <Image Source="{Binding CoverPath}" Stretch="UniformToFill"/>
+                                </Border>
+
+                                <StackPanel Grid.Column="1" Margin="10,8,5,5" VerticalAlignment="Center">
+
+                                    <TextBlock Text="{Binding Name}" FontWeight="Bold" FontSize="15" 
+                           Foreground="#333" TextTrimming="CharacterEllipsis" Margin="0,0,0,6"/>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="💧" Width="20" TextAlignment="Center" ToolTip="Мінімальний об'єм"/>
+                                        <TextBlock Text="Об'єм: " Foreground="Gray" FontSize="12"/>
+                                        <TextBlock Text="{Binding MinTankSize, StringFormat='{}{0}+ л'}" FontWeight="SemiBold" FontSize="12"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="👨‍👩‍👧‍👦" Width="20" TextAlignment="Center" ToolTip="Мінімальна зграя"/>
+                                        <TextBlock Text="Зграя: " Foreground="Gray" FontSize="12"/>
+                                        <TextBlock Text="{Binding MinGroupSize, StringFormat='{}{0}+ шт'}" FontWeight="SemiBold" FontSize="12"/>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Margin="0,2">
+                                        <TextBlock Text="🧼" Width="20" TextAlignment="Center" ToolTip="Біо-навантаження"/>
+                                        <TextBlock Text="Біонавантаження: " Foreground="Gray" FontSize="12"/>
+                                        <TextBlock Text="{Binding BioLoadValue}" FontWeight="SemiBold" Foreground="#555" FontSize="12"/>
+                                    </StackPanel>
+
+                                </StackPanel>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+
+                <ListBox.ItemContainerStyle>
+                    <Style TargetType="ListBoxItem">
+                        <Setter Property="Margin" Value="3"/>
+                        <Setter Property="Padding" Value="0"/>
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ListBoxItem">
+                                    <Border x:Name="Border" 
+                                            BorderThickness="2" CornerRadius="5" 
+                                            BorderBrush="Transparent" Background="Transparent">
+                                        <ContentPresenter />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="IsSelected" Value="True">
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="#2196F3"/>
+                                            <Setter TargetName="Border" Property="Background" Value="#E3F2FD"/>
+                                        </Trigger>
+                                        <Trigger Property="IsMouseOver" Value="True">
+                                            <Setter TargetName="Border" Property="BorderBrush" Value="LightGray"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </ListBox.ItemContainerStyle>
+            </ListBox>
+        </GroupBox>
+
+        <StackPanel Grid.Column="1" Margin="0,40,0,0">
+
+            <GroupBox Header="Крок 2: Деталі рибки" Padding="15" Background="White">
+                <StackPanel>
+                    <Label Content="Ім'я (Кличка):" FontWeight="SemiBold"/>
+                    <TextBox x:Name="NameTextBox" Height="30" Margin="0,0,0,15" Padding="2"/>
+                    <TextBlock Text="Залиште пустим, якщо без імені" FontSize="11" Foreground="Gray" Margin="0,-12,0,15"/>
+
+                    <Label Content="Стать:" FontWeight="SemiBold"/>
+                    <ComboBox x:Name="GenderComboBox" Height="30" Margin="0,0,0,15" SelectedIndex="0" SelectionChanged="GenderComboBox_SelectionChanged">
+                        <ComboBoxItem Content="Unknown (Невідома)"/>
+                        <ComboBoxItem Content="Male (Самець)"/>
+                        <ComboBoxItem Content="Female (Самка)"/>
+                    </ComboBox>
+
+                    <Border Background="#FFF8E1" BorderBrush="#FFECB3" BorderThickness="1" CornerRadius="3" Padding="10" Margin="0,10,0,0">
+                        <TextBlock Text="💡 Порада: Для більшості риб важливо дотримуватися правильного співвідношення самців і самок." 
+                                   TextWrapping="Wrap" FontSize="12" Foreground="#795548"/>
+                    </Border>
+                </StackPanel>
+            </GroupBox>
+
+            <Button x:Name="SaveButton" Content="Заселити" 
+                    Height="45" Margin="0,20,0,10" 
+                    Background="#0080FF" Foreground="White" FontWeight="Bold" FontSize="16"
+                    Click="SaveButton_Click"/>
+            <Button Content="Скасувати" Height="30" 
+                    Background="Transparent" BorderThickness="0" Foreground="Gray"
+                    Click="CancelButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Page>

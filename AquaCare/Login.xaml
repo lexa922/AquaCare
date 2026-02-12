@@ -1,0 +1,22 @@
+﻿<Page x:Class="AquaCare.Login"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Login" Background="#FFE9E9E9">
+
+    <Grid>
+        <Label Content="Вхід" HorizontalAlignment="Center" Margin="0,98,0,0" VerticalAlignment="Top" FontFamily="Arial" FontSize="36" FontWeight="Bold"/>
+        <Label Content="Ім'я користувача:" HorizontalAlignment="Left" Margin="313,178,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial"/>
+        <Label Content="Пароль:" HorizontalAlignment="Left" Margin="313,230,0,0" VerticalAlignment="Top" FontSize="16" FontFamily="Arial"/>
+        <TextBox x:Name="UsernameTextbox" HorizontalAlignment="Left" Margin="456,182,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="186" Height="25"/>
+        <PasswordBox x:Name="PasswordBox1" HorizontalAlignment="Left" Margin="456,234,0,0" VerticalAlignment="Top" Width="186" Height="25"/>
+        <Button Content="Увійти" Background="#FF46A1FF" Foreground="White" BorderBrush="#FFFFF9F9" VerticalContentAlignment="Center" BorderThickness="2,2,2,2" Cursor="Arrow" Margin="0,300,0,210" HorizontalAlignment="Center" Width="200" FontFamily="Arial" FontSize="16" Click="Button_Click"/>
+        <TextBox x:Name="ErrorTextBox" HorizontalAlignment="Center" Margin="0,418,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="200" Height="76" FontFamily="Arial" FontSize="18" Background="#FFE9E9E9" BorderBrush="#FFE9E9E9" SelectionTextBrush="#FFE9E9E9" Foreground="Red" AllowDrop="False" IsEnabled="False"/>
+        <Button Content="Я ще не маю аккаунта" HorizontalAlignment="Left" Margin="786,471,0,0" VerticalAlignment="Top" Height="43" Width="169" Click="Button_Click_1" FontSize="16" FontFamily="Arial"/>
+
+    </Grid>
+</Page>

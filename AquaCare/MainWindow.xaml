@@ -1,0 +1,92 @@
+﻿<Window x:Class="AquaCare.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AquaCare"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="1200
+        " FontFamily="Arial">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Frame x:Name="MainFrame" 
+               Grid.Column="1" 
+               Content="" 
+               HorizontalAlignment="Stretch" 
+               VerticalAlignment="Stretch"
+               FontFamily="Arial" 
+               Background="#FFE9E9E9" 
+               NavigationUIVisibility="Hidden" 
+               Navigated="Frame_Navigated"/>
+
+        <Grid x:Name="Menu" Grid.Column="0" Background="#FF46A1FF">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+
+            <ScrollViewer Grid.Row="0" VerticalScrollBarVisibility="Auto">
+                <StackPanel Orientation="Vertical" Margin="10">
+
+                    <StackPanel.Resources>
+                        <Style TargetType="Button">
+                            <Setter Property="Background" Value="#FF46A1FF"/>
+                            <Setter Property="Foreground" Value="White"/>
+                            <Setter Property="BorderBrush" Value="#FFFFF9F9"/>
+                            <Setter Property="BorderThickness" Value="2"/>
+                            <Setter Property="Height" Value="50"/>
+                            <Setter Property="Margin" Value="0,0,0,5"/>
+                            <Setter Property="Cursor" Value="Hand"/>
+                            <Setter Property="FontSize" Value="14"/>
+                        </Style>
+                    </StackPanel.Resources>
+
+                    <Button x:Name="SpeciesAll" Content="Довідник видів" Click="SpeciesAll_Click"/>
+                    <Button x:Name="Aquariums" Content="Акваріуми" Click="Aquariums_Click"/>
+
+                    <Button x:Name="FishSpecies" Content="Риби" Visibility="Collapsed" Click="FishSpecies_Click"/>
+                    <Button x:Name="PlantSpecies" Content="Рослини" Visibility="Collapsed" Click="PlantSpecies_Click"/>
+
+                    <Border Height="2" Background="White" Margin="0,10" Opacity="0.5"/>
+
+                    <Button x:Name="AddAquarium" Content="Створити акваріум" Visibility="Collapsed" Click="AddAquarium_Click"/>
+                    <Button x:Name="AddFish" Content="Додати вид риб" Visibility="Collapsed" Click="AddFish_Click"/>
+                    <Button x:Name="AddPlant" Content="Додати вид рослин" Visibility="Collapsed" Click="AddPlant_Click"/>
+                    <Button x:Name="AddSubstrate" Content="Додати вид грунту" Visibility="Collapsed" Click="AddSubstrate_Click"/>
+
+                    <Button x:Name="AddDisease" Content="Додати хворобу" Visibility="Collapsed" Click="AddDisease_Click"/>
+                    <Button x:Name="AddCompatabilityRule" Content="Правила сумісності" Visibility="Collapsed" Click="AddCompatabilityRule_Click"/>
+
+                    <Button x:Name="ToSuperAdminPanel" Content="Суперадміну" Visibility="Collapsed" Click="ToSuperAdminPanel_Click"/>
+
+                    <Border Height="2" Background="White" Margin="0,10" Opacity="0.5"/>
+
+                    <Button x:Name="ToFish" Content="⬅ До видів риб" Visibility="Collapsed" Click="ToFish_Click"/>
+                    <Button x:Name="ToMain" Content="⬅ На головну" Visibility="Collapsed" Click="ToMain_Click"/>
+
+                </StackPanel>
+            </ScrollViewer>
+
+            <Button x:Name="LogoutBtn" 
+                    Grid.Row="1"
+                    Content="🚪 Вийти" 
+                    Click="LogoutButton_Click"
+                    Margin="10,10,10,20" 
+                    Padding="10,8"
+                    Background="#FFEBEE" Foreground="#D32F2F" BorderBrush="#FFCDD2"
+                    FontWeight="Bold" Cursor="Hand" Height="40">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="5"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+        </Grid>
+    </Grid>
+</Window>

@@ -1,0 +1,16 @@
+﻿<Page x:Class="AquaCare.AllSpecies"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="AllSpecies" Background="#FFE9E9E9">
+
+    <Grid>
+        <Image Source="/PlaceholderImgs/SpeciesDirectory_placeholder.png" 
+   Width="600" Height="600" 
+   RenderOptions.BitmapScalingMode="HighQuality"/>
+    </Grid>
+</Page>
