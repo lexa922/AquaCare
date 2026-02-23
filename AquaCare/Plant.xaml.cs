@@ -55,7 +55,8 @@ namespace AquaCare
                     if (!string.IsNullOrEmpty(species.ImagePath))
                     {
                         string potentialPath = System.IO.Path.Combine(baseDir, species.ImagePath);
-                        if (System.IO.File.Exists(potentialPath)) finalPath = potentialPath;
+                        if (System.IO.File.Exists(potentialPath)) 
+                            finalPath = potentialPath;
                     }
 
                     plantCardsList.Add(new PlantCardData
