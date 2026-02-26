@@ -52,17 +52,8 @@ namespace AquaCare
             types = await subsRepo.GetSubstrateTypesAsync();
 
             SubstrateType.ItemsSource = types;
-            List<String> sizes = new()
-            {
-                "0,4-1,2",
-                "1,4-2",
-                "1-2",
-                "2-4",
-                "4-8",
-                "5-10",
-                "10-20"
-            };
-            SubstrateSize.ItemsSource = sizes;
+            
+            SubstrateSize.ItemsSource = SubstrateSizes.GetAll();
         }
             
         private void ColorRectangle_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
