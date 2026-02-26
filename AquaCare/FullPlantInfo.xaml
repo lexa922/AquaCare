@@ -1,0 +1,63 @@
+﻿<Page x:Class="AquaCare.FullPlantInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="FullPlantInfo">
+
+    <Grid Background="#FFE9E9E9">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="420"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        
+        <ScrollViewer Grid.Column="0" 
+      HorizontalScrollBarVisibility="Auto" 
+      VerticalScrollBarVisibility="Disabled" 
+      Height="320"
+      Width="400"
+      VerticalAlignment="Top"
+      Margin="20,0,0,0">
+
+            <ItemsControl x:Name="GalleryItemsControl" Width="800" Height="320">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Source}" 
+                   Width="400" 
+                   Height="320" 
+                   Stretch="UniformToFill"
+                   Margin="5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+        <StackPanel Grid.Column="1" Margin="20,0,0,0">
+            <Label x:Name="SpeciesName" Content="[Species Name]" FontWeight="Bold" FontSize="24"/>
+            
+            <Label Content="Опис виду: " FontWeight="Bold" Margin="0,10,0,0"/>
+
+            <TextBlock x:Name="SpeciesDesc" Text="[Species Description]" TextWrapping="Wrap" Margin="10,0,10,0"/>
+
+            <Label Content="Сумісні типи грунту:" FontWeight="Bold" Margin="0,30,0,0"/>
+
+            <TextBlock x:Name="CompatibleSubstrates" Height="25" Width="529" HorizontalAlignment="Left" Background="#FFE9E9E9" Margin="10,0,0,0"/>
+
+            <Label Grid.Column="1" FontWeight="Bold" Content="Необхідна тривалість світлового дня в годинах:"/>
+
+            <Label Grid.Column="1" Content="" x:Name="LightDuration" Margin="10,0,0,0"/>
+
+            <Label Grid.Column="1" Content="Найбільш сприятлива інтенсивність світла:" FontWeight="Bold"/>
+
+            <Label Grid.Column="1" Content="" x:Name="LightIntensity" Margin="10,0,0,0"/>
+
+        </StackPanel>
+    </Grid>
+</Page>

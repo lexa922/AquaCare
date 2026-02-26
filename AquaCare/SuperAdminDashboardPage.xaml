@@ -1,0 +1,227 @@
+﻿<Page x:Class="AquaCare.SuperAdminDashboardPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="SuperAdminDashboardPage">
+    
+    <Page.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+    </Page.Resources>
+    
+    <ScrollViewer>
+        <Grid Background="#F5F5F5">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Text="Панель Суперадміністратора" 
+                   FontSize="24" FontWeight="Bold" Foreground="#333"
+                   Margin="25,25,0,15"/>
+
+        <UniformGrid Grid.Row="1" Columns="3" Rows="2" Margin="20,0,20,10">
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="Користувачі" Foreground="Gray" FontSize="14"/>
+                        <TextBlock x:Name="TotalUsersText" Text="0" FontSize="36" FontWeight="Bold" Foreground="#2196F3" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="👥" FontSize="30" Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <StackPanel>
+                        <TextBlock Text="Акваріуми" Foreground="Gray" FontSize="14"/>
+                        <TextBlock x:Name="TotalTanksText" Text="0" FontSize="36" FontWeight="Bold" Foreground="#009688" Margin="0,5,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="💧" FontSize="30" Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="15">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <StackPanel Grid.Row="0">
+                        <TextBlock Text="🐟 Популярні види" FontSize="12" Foreground="Gray" Margin="0,0,0,5"/>
+                        <ListBox x:Name="TopFishList" BorderThickness="0" Background="Transparent" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Padding="0"/>
+                    </StackPanel>
+                    <Border Grid.Row="1" Height="1" Background="#EEEEEE" Margin="0,5"/>
+                    <StackPanel Grid.Row="2">
+                        <TextBlock Text="🌿 Популярні рослини" FontSize="12" Foreground="Gray" Margin="0,0,0,5"/>
+                        <ListBox x:Name="TopPlantsList" BorderThickness="0" Background="Transparent" 
+                         ScrollViewer.HorizontalScrollBarVisibility="Disabled" Padding="0"/>
+                    </StackPanel>
+                </Grid>
+            </Border>
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="⚠️ Епідеміологія" Foreground="Gray" FontSize="13"/>
+                        <TextBlock x:Name="TopDiseaseName" Text="Завантаження..." FontSize="18" FontWeight="SemiBold" Foreground="#D32F2F" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                        <TextBlock x:Name="TopDiseaseCount" Text="0 випадків" FontSize="12" Foreground="#EF5350" Margin="0,2,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="💊" FontSize="30" Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="👑 Лідер розмноження" Foreground="Gray" FontSize="13"/>
+                        <TextBlock x:Name="TopBreederName" Text="Завантаження..." FontSize="18" FontWeight="SemiBold" Foreground="#FBC02D" TextWrapping="Wrap" Margin="0,5,0,0"/>
+                        <TextBlock x:Name="TopBreederCount" Text="0 мальків" FontSize="12" Foreground="#FBC02D" Margin="0,2,0,0"/>
+                    </StackPanel>
+                    <TextBlock Text="🐣" FontSize="30" Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
+            <Border Background="White" CornerRadius="12" Margin="6" Padding="20">
+                <Border.Effect>
+                    <DropShadowEffect Color="#B0BEC5" Opacity="0.3" ShadowDepth="3" BlurRadius="10"/>
+                </Border.Effect>
+                <Grid>
+                    <StackPanel VerticalAlignment="Center">
+                        <TextBlock Text="Об'єм системи" Foreground="Gray" FontSize="13"/>
+                        <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                            <TextBlock x:Name="TotalVolumeText" Text="0" FontSize="32" FontWeight="Bold" Foreground="#3F51B5"/>
+                            <TextBlock Text=" л" FontSize="20" Foreground="Gray" VerticalAlignment="Bottom" Margin="2,0,0,4"/>
+                        </StackPanel>
+                        <TextBlock Text="Сумарний літраж" FontSize="10" Foreground="LightGray"/>
+                    </StackPanel>
+                    <TextBlock Text="🌊" FontSize="30" Opacity="0.15" HorizontalAlignment="Right" VerticalAlignment="Top"/>
+                </Grid>
+            </Border>
+
+        </UniformGrid>
+
+        <Border Grid.Row="2" Background="White" Margin="25,0,25,25" CornerRadius="12" Padding="15">
+            <Border.Effect>
+                <DropShadowEffect Color="#B0BEC5" Opacity="0.2" ShadowDepth="2" BlurRadius="8"/>
+            </Border.Effect>
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Керування акаунтами" FontWeight="Bold" FontSize="16" Margin="0,0,0,15" Foreground="#37474F"/>
+
+                <DataGrid x:Name="UsersGrid" Grid.Row="1" 
+                          AutoGenerateColumns="False" 
+                          IsReadOnly="True" 
+                          CanUserAddRows="False"
+                          HeadersVisibility="Column" 
+                          GridLinesVisibility="Horizontal"
+                          HorizontalGridLinesBrush="#EEEEEE"
+                          BorderThickness="0"
+                          Background="White">
+
+                    <DataGrid.Resources>
+                        <Style TargetType="DataGridColumnHeader">
+                            <Setter Property="Background" Value="Transparent"/>
+                            <Setter Property="FontWeight" Value="SemiBold"/>
+                            <Setter Property="Padding" Value="10,5"/>
+                            <Setter Property="Foreground" Value="Gray"/>
+                        </Style>
+                        <Style TargetType="DataGridCell">
+                            <Setter Property="Padding" Value="10"/>
+                            <Setter Property="Template">
+                                <Setter.Value>
+                                    <ControlTemplate TargetType="DataGridCell">
+                                        <Border Padding="{TemplateBinding Padding}" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
+                                            <ContentPresenter SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"/>
+                                        </Border>
+                                    </ControlTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Style>
+                    </DataGrid.Resources>
+
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding UserId}" Width="50" Foreground="Gray"/>
+
+                        <DataGridTextColumn Header="Логін" Binding="{Binding Login}" Width="*" FontWeight="SemiBold"/>
+
+                        <DataGridTemplateColumn Header="Ролі" Width="1.5*">
+                            <DataGridTemplateColumn.CellTemplate>
+                                <DataTemplate>
+                                    <Border Background="#F5F5F5" CornerRadius="4" Padding="8,4" HorizontalAlignment="Left" VerticalAlignment="Center">
+                                        <TextBlock Text="{Binding Role}" 
+                                                   Foreground="{Binding RoleColor}" 
+                                                   FontWeight="Bold" FontSize="12"/>
+                                    </Border>
+                                </DataTemplate>
+                            </DataGridTemplateColumn.CellTemplate>
+                        </DataGridTemplateColumn>
+
+                            <DataGridTemplateColumn Header="Дії" Width="Auto">
+                                <DataGridTemplateColumn.CellTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+
+                                            <Button Content="🔼 +Адмін" Click="MakeAdmin_Click" 
+                        Visibility="{Binding CanPromote, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Margin="0,0,5,0" Padding="8,4"
+                        Background="#FFEB3B" BorderThickness="0" FontSize="11" FontWeight="Bold" Cursor="Hand"/>
+
+                                            <Button Content="🔽 -Адмін" Click="RemoveAdmin_Click" 
+                        Visibility="{Binding CanDemote, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Margin="0,0,5,0" Padding="8,4"
+                        Background="#E0E0E0" Foreground="Black" BorderThickness="0" FontSize="11" FontWeight="Bold" Cursor="Hand"/>
+
+                                            <Button Content="🗑 Видалити" Click="DeleteUser_Click" 
+                        IsEnabled="{Binding CanDelete}"
+                        Padding="8,4"
+                        Background="#FFEBEE" Foreground="#D32F2F" BorderThickness="0" FontSize="11" FontWeight="Bold" Cursor="Hand">
+                                                <Button.Style>
+                                                    <Style TargetType="Button">
+                                                        <Style.Triggers>
+                                                            <Trigger Property="IsEnabled" Value="False">
+                                                                <Setter Property="Opacity" Value="0.3"/>
+                                                            </Trigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Button.Style>
+                                            </Button>
+
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </DataGridTemplateColumn.CellTemplate>
+                            </DataGridTemplateColumn>
+                        </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </Border>
+    </Grid>
+    </ScrollViewer>
+</Page>

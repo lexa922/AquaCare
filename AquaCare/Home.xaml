@@ -1,0 +1,22 @@
+﻿<Page x:Class="AquaCare.Home"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="Home" Background="#FFE9E9E9">
+
+    <Grid Loaded="Grid_Loaded">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="Вітаємо в AquaCare!" 
+                   FontSize="24" FontWeight="Bold" 
+                   Foreground="#333" Margin="0,20,0,10" 
+                   HorizontalAlignment="Center"/>
+            <Image Source="/PlaceholderImgs/Homepage_placeholder.png" 
+               Width="500" Height="500" 
+               RenderOptions.BitmapScalingMode="HighQuality"/>
+        </StackPanel>
+    </Grid>
+</Page>

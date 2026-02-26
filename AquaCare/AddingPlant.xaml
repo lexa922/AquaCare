@@ -1,0 +1,61 @@
+﻿<Page x:Class="AquaCare.AddingPlant"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="AddingPlant" Background="#FFE9E9E9"
+      Loaded="Page_Loaded">
+
+    <Grid Margin="20">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Label Content="Назва виду:" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center" />
+        <TextBox x:Name="PlantName" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center" Margin="5" />
+
+        <Label Content="Підходящі типи грунту:" Grid.Row="1" Grid.Column="0" VerticalAlignment="Top" Margin="0,5,0,0"/>
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="5">
+            <TextBlock Text="(Утримуйте Ctrl для вибору кількох)" FontSize="11" Foreground="Gray" Margin="0,0,0,2"/>
+            <ListBox x:Name="Substrate" 
+                     Height="100" 
+                     SelectionMode="Multiple" DisplayMemberPath="TypeName"/>
+        </StackPanel>
+
+        <Label Content="Тривалість освітлення (год):" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center" />
+        <xctk:IntegerUpDown x:Name="LightDuration" Value="8" Minimum="0" Maximum="24" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center" Margin="5"/>
+
+        <Label Content="Інтенсивність освітлення:" Grid.Row="3" Grid.Column="0" VerticalAlignment="Center" />
+        <ComboBox x:Name="LightIntensity" Grid.Row="3" Grid.Column="1" Margin="5"
+                  DisplayMemberPath="Name" SelectedValuePath="LightIntensityLevelId"/>
+
+        <Label Grid.Row="4" Grid.Column="0" Content="Опис виду:"/>
+        <TextBox x:Name="SpeciesDesc" Grid.Row="4" Grid.Column="1" Height="178" Margin="5" TextWrapping="Wrap" AcceptsReturn="True" VerticalScrollBarVisibility="Auto"/>
+
+        <Button Content="Додати Рослину" Grid.Row="5" Grid.Column="1" Height="40" Width="156" HorizontalAlignment="Left" Margin="5" Click="SaveButton_Click"/>
+
+        <StackPanel Grid.Row="0" Grid.Column="2" Grid.RowSpan="5" Margin="20,0,0,0">
+            <Label Content="Фото рослини:"/>
+            <ListBox x:Name="SelectedPhotos" Height="150" Margin="0,5,0,0" />
+            <Button Content="Вибрати фото..." Margin="0,10,0,0" Width="120" HorizontalAlignment="Left" Click="SelectPhotosButton_Click"/>
+        </StackPanel>
+
+    </Grid>
+</Page>

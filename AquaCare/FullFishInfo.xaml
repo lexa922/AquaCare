@@ -1,0 +1,65 @@
+﻿<Page x:Class="AquaCare.FullFishInfo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:AquaCare"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="1000"
+      Title="FullFishInfo" Background="#FFE9E9E9">
+    <ScrollViewer>
+        <Grid Margin="20">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <ScrollViewer Grid.Column="0" 
+              HorizontalScrollBarVisibility="Auto" 
+              VerticalScrollBarVisibility="Disabled" 
+              Height="220"
+              VerticalAlignment="Top">
+
+            <ItemsControl x:Name="GalleryItemsControl" Width="700" Height="220">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <StackPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Image Source="{Binding Source}" 
+                           Width="350" 
+                           Height="220" 
+                           Stretch="UniformToFill"
+                           Margin="5"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </ScrollViewer>
+
+        <StackPanel Grid.Column="1" Margin="20,0,0,0">
+            <Label x:Name="SpeciesName" Content="[Species Name]" FontWeight="Bold" FontSize="24"/>
+
+            <Label Content="Опис виду: " FontWeight="Bold" Margin="0,10,0,0"/>
+
+            <TextBlock x:Name="SpeciesDesc" Text="[Species Description]" TextWrapping="Wrap" Margin="10,0,0,0"/>
+
+            <Label Content="Мінімальний розмір акваріуму в літрах:" FontWeight="Bold" Margin="0,30,0,0"/>
+
+            <TextBlock x:Name="MinTank" Text="[Tank size]" TextWrapping="Wrap" Margin="10,0,0,0"/>
+
+            <Label Content="Мінімальний розмір зграйки:" FontWeight="Bold" Margin="0,5,0,0"/>
+
+            <TextBlock x:Name="MinGroup" Text="[Group size]" TextWrapping="Wrap" Margin="10,0,0,0"/>
+
+            <Label Content="Біологічне навантаження однієї особини на акваріум:" FontWeight="Bold" Margin="0,5,0,0"/>
+
+            <TextBlock x:Name="BioLoad" Text="[Biological load]" TextWrapping="Wrap" Margin="10,0,0,0"/>
+
+        </StackPanel>
+
+    </Grid>
+    </ScrollViewer>
+</Page>
