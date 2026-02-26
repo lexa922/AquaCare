@@ -18,6 +18,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using AquaCare.enums;
 using DbImage = AquaCareClasses.Image;
 
 namespace AquaCare
@@ -83,24 +84,13 @@ namespace AquaCare
                                             .Select(s => s.SubstrateTypeId)
                                             .ToList();
 
-                var dbImagePaths = new List<string>();
-                string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string imagesFolder = Path.Combine(appDirectory, "PlantSpeciesImg");
-                Directory.CreateDirectory(imagesFolder);
-
-                foreach (string originalPath in selectedPhotoPaths)
-                {
-                    string fileName = Path.GetFileName(originalPath);
-                    string destinationPath = Path.Combine(imagesFolder, fileName);
-                    File.Copy(originalPath, destinationPath, true);
-
-                    string relativePath = Path.Combine("PlantSpeciesImg", fileName);
-                    dbImagePaths.Add(relativePath);
-                }
+                var directoryName = ImgDirectoryNames.FishSpeciesImg.ToString();
+            
+                var processedImgPath = PhotoProcessor.ProcessSpeciesPhoto(directoryName, selectedPhotoPaths);
 
                 var plantRepo = new PlantRepository(UserSession.CurrentConnectionString);
 
-                await plantRepo.AddSpeciesAsync(newPlant, selectedSubstrateIds, dbImagePaths);
+                await plantRepo.AddSpeciesAsync(newPlant, selectedSubstrateIds, processedImgPath);
 
                 MessageBox.Show("Новий вид рослини успішно додано!", "Успіх", MessageBoxButton.OK, MessageBoxImage.Information);
                 ClearForm();
@@ -114,7 +104,6 @@ namespace AquaCare
         {
             try
             {
-                var plantRepo = new PlantRepository(UserSession.CurrentConnectionString);
                 var lightRepo = new LightsRepository(UserSession.CurrentConnectionString);
                 var subsRepo = new SubstrateRepository(UserSession.CurrentConnectionString);
 

@@ -16,6 +16,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
+using AquaCare.enums;
 using DbImage = AquaCareClasses.Image;
 
 namespace AquaCare
@@ -38,7 +39,7 @@ namespace AquaCare
                 MessageBox.Show("Назва виду та хоча б одне фото є обов'язковими.");
                 return;
             }
-            var dbImagePaths = new List<string>();
+            
             var newSpecies = new FishSpecie(
                     SpecieName.Text,
                     SpeciesDesc.Text,
@@ -46,23 +47,14 @@ namespace AquaCare
                     double.Parse(BioLoad.Text),
                     int.Parse(MinGroup.Text)
             );
-                string appDirectory = AppDomain.CurrentDomain.BaseDirectory;
-                string imagesFolder = Path.Combine(appDirectory, "FishSpeciesImg");
-                Directory.CreateDirectory(imagesFolder);
 
-            foreach (string originalPath in selectedPhotoPaths)
-            {
-                string fileName = Path.GetFileName(originalPath);
-                string destinationPath = Path.Combine(imagesFolder, fileName);
-                File.Copy(originalPath, destinationPath, true);
-
-                string relativePath = Path.Combine("FishSpeciesImg", fileName);
-
-                dbImagePaths.Add(relativePath);
-            }
+            var directoryName = ImgDirectoryNames.FishSpeciesImg.ToString();
+            
+            var processedImgPath = PhotoProcessor.ProcessSpeciesPhoto(directoryName, selectedPhotoPaths);
+            
             var fishRepo = new FishRepository(UserSession.CurrentConnectionString);
 
-            await fishRepo.AddSpeciesAsync(newSpecies, dbImagePaths);
+            await fishRepo.AddSpeciesAsync(newSpecies, processedImgPath);
 
             MessageBox.Show("Новий вид риби та фото успішно додано!");
         }
