@@ -16,6 +16,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using static AquaCare.Fish;
+using AquaCare.Models;
 
 namespace AquaCare
 {
@@ -24,16 +25,6 @@ namespace AquaCare
     /// </summary>
     public partial class Plant : Page
     {
-        public class PlantCardData
-        {
-            public int Id { get; set; }
-            public string Name { get; set; }
-            public string Description { get; set; }
-            public string CoverPath { get; set; }
-            public string PlantDescription { get; set; }
-            public string SoilInfo { get; set; } 
-            public string LightInfo { get; set; }
-        }
         public Plant()
         {
             InitializeComponent();
@@ -47,23 +38,15 @@ namespace AquaCare
                 var plantRepo = new PlantRepository(UserSession.CurrentConnectionString);
                 var allSpecies = await plantRepo.GetAllSpeciesAsync();
 
-                string baseDir = AppDomain.CurrentDomain.BaseDirectory;
-
                 foreach (var species in allSpecies)
                 {
-                    string finalPath = System.IO.Path.Combine(baseDir, "PlantSpeciesImg", "default.png");
-                    if (!string.IsNullOrEmpty(species.ImagePath))
-                    {
-                        string potentialPath = System.IO.Path.Combine(baseDir, species.ImagePath);
-                        if (System.IO.File.Exists(potentialPath)) finalPath = potentialPath;
-                    }
 
                     plantCardsList.Add(new PlantCardData
                     {
                         Id = species.PlantSpecieId,
                         Name = species.SpeciesName,
                         Description = species.SpeciesDescription,
-                        CoverPath = finalPath,
+                        CoverPath = species.FullImagePath,
                         SoilInfo = species.CompatibleSubstrates,
                         LightInfo = species.LightLevelName
                     });
@@ -77,7 +60,7 @@ namespace AquaCare
             }
         }
 
-        private void SpeciesCard_MouseLeftButtonDown(object sender, System.Windows.Input.MouseButtonEventArgs e)
+        private void SpeciesCard_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             SpeciesCard clickedCard = sender as SpeciesCard;
             if (clickedCard == null) return;

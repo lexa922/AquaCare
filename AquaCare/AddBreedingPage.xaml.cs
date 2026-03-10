@@ -83,7 +83,7 @@ namespace AquaCare
             {
                 _newPhotoPaths.AddRange(dlg.FileNames);
                 PhotosList.ItemsSource = null;
-                PhotosList.ItemsSource = _newPhotoPaths; // Тут проста логіка, для повноцінної треба об'єднувати старі і нові
+                PhotosList.ItemsSource = _newPhotoPaths;
                 PhotoCountText.Text = $"Нових: {_newPhotoPaths.Count}";
             }
         }
