@@ -16,5 +16,6 @@ namespace AquaCareClasses
         public Aquarium Aquariums { get; set; }
         [ForeignKey("SpeciesId")]
         public PlantSpecie Plants { get; set; }
+        
     }
 }

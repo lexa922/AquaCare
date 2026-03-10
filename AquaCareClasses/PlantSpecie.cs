@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,6 +34,9 @@ namespace AquaCareClasses
             SpeciesName = speciesName;
             LightDurationHrs = lightDurationHrs;
         }
-
+        public string FullImagePath => 
+            File.Exists(Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ImagePath)) 
+                ? Path.Combine(AppDomain.CurrentDomain.BaseDirectory, ImagePath) 
+                : Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "PlantSpeciesImg", "default.png");
     }
 }
